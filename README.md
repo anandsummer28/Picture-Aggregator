@@ -1,5 +1,9 @@
 # Picture Aggregator
-![](./static/logo.png)
+
+<p align="center">
+  <img src="./static/logo.png" alt="Picture Aggregator Logo" width="100"/>
+</p>
+
 A powerful Flask-based web application that automatically detects and groups faces from your photo collection. Perfect for organizing large photo libraries, event photos, or family albums by detecting and aggregating similar faces together.
 
 ## 🌟 Features
@@ -19,7 +23,7 @@ A powerful Flask-based web application that automatically detects and groups fac
 ### Demo
 
 <p align="center">
-  <img src="./static/group_directory_demo.gif" alt="Face Grouping Demo" width="800"/>
+  <img src="./static/group_directory_demo.gif" alt="Face Grouping Demo" width="200"/>
 </p>
 
 If the demo gif isn't visible above or is too fast, you can [view the demo video here](./static/demo.mp4).
