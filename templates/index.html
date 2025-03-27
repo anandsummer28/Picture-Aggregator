@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Grouping App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #343a40;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 200px;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
+        <h1 class="text-center">Face Grouping Application</h1>
+        <p class="text-center">This application allows you to upload images or select a folder containing images of people. It will automatically detect and group the faces into separate folders for easy sharing and organization.</p>
+        
+        {% if message %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+        {% endif %}
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Upload Images</h2>
+            </div>
+            <div class="card-body">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" name="files[]" multiple class="form-control-file" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Process Folder</h2>
+            </div>
+            <div class="card-body">
+                <form action="/process_folder" method="post">
+                    <div class="form-group">
+                        <input type="text" name="folder_path" class="form-control" placeholder="Enter folder path" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Process</button>
+                </form>
+            </div>
+        </div>
+
+        <form action="/reset" method="post">
+            <button type="submit" class="btn btn-danger btn-block">Reset Uploads and Rename Output</button>
+        </form>
+
+        <a href="/output" class="btn btn-info btn-block mt-3">View Output</a>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
